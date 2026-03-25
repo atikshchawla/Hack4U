@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-satoshi);
+	--font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+@font-face {
+	font-family: "Satoshi";
+	src:
+		url("/fonts/Satoshi-Regular.woff2") format("woff2"),
+		url("/fonts/Satoshi-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@layer base{	
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 100px;
+	cursor: url("/svgs/cursor.svg") 4 4, auto;
+}
+a,
+input,
+textarea,
+button,
+select,
+label {
+	cursor: url("/svgs/cursor.svg") 4 4, auto;
+}
+
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: "Satoshi", Arial, Helvetica, sans-serif;
+}}
+
+@layer utilities {
+	.perspective-1000 {
+		perspective: 1000px;
+	}
+
+	.rotate-y-12 {
+		transform: rotateY(12deg);
+	}
+
+	.-rotate-y-12 {
+		transform: rotateY(-12deg);
+	}
+
+	.rotate-y-25 {
+		transform: rotateY(25deg);
+	}
+
+	.-rotate-y-25 {
+		transform: rotateY(-25deg);
+	}
+
+	.text-gradient-title {
+		background: linear-gradient(180deg, #ffffff 30%, #999999 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.btn-gradient-border {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 15px;
+		border: 2px solid transparent;
+
+		background:
+			radial-gradient(60.5% 60.5% at 50% 50%, #19954b 59.15%, #0cac4f 86.65%)
+				padding-box,
+			linear-gradient(90deg, #8cff84 0%, #0eb337 27%, #42d774 79%, #85ffb0 100%)
+				border-box;
+
+		color: white;
+		font-weight: 500;
+
+		transform: scale(1);
+		transform-origin: center center;
+		will-change: transform, box-shadow;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.btn-gradient-border:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 30px rgba(74, 222, 128, 0.4);
+	}
+
+	.btn-gradient-border {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 15px;
+		border: 2px solid transparent;
+		background:
+			radial-gradient(60.5% 60.5% at 50% 50%, #19954b 59.15%, #0cac4f 86.65%)
+				padding-box,
+			linear-gradient(90deg, #8cff84 0%, #0eb337 27%, #42d774 79%, #85ffb0 100%)
+				border-box;
+
+		transform: scale(1);
+		transform-origin: center center;
+		will-change: transform, box-shadow;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.btn-gradient-border:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 30px rgba(74, 222, 128, 0.4);
+	}
+
+	@layer utilities {
+		.glass-frame-center {
+			position: relative;
+			display: flex;
+			padding: 15.5px;
+			border-radius: 79px;
+
+			background: linear-gradient(
+				rgba(64, 162, 105, 0.1),
+				rgba(64, 162, 105, 0.1)
+			);
+			backdrop-filter: blur(4px);
+
+			box-shadow:
+				inset 4px 5px 6px rgba(5, 36, 18, 0.5),
+				inset 0 0 20px rgba(74, 222, 128, 0.1);
+		}
+
+		.glass-frame-center::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 79px;
+			padding: 1px;
+			pointer-events: none;
+
+			background: linear-gradient(180deg, #bddac9 0%, #114728 100%);
+
+			-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+		}
+
+		.glass-frame-side {
+			position: relative;
+			display: flex;
+			padding: 12px;
+			border-radius: 70px;
+
+			background: linear-gradient(
+				rgba(19, 114, 59, 0.1),
+				rgba(19, 114, 59, 0.1)
+			);
+			backdrop-filter: blur(2px);
+
+			box-shadow: inset 4px 5px 6px rgba(0, 0, 0, 0.3);
+		}
+
+		.glass-frame-side {
+			position: relative;
+			display: flex;
+			padding: 12px;
+			border-radius: 70px;
+
+			/* Matching Glass Effect */
+			background: linear-gradient(
+				rgba(64, 162, 105, 0.1),
+				rgba(64, 162, 105, 0.1)
+			);
+			backdrop-filter: blur(4px);
+			box-shadow:
+				inset 4px 5px 6px rgba(5, 36, 18, 0.5),
+				inset 0 0 20px rgba(74, 222, 128, 0.1);
+		}
+
+		.glass-frame-side::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 70px;
+			padding: 1px;
+			pointer-events: none;
+
+			background: linear-gradient(180deg, #bddac9 0%, #114728 100%);
+
+			-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+		}
+	}
+}
